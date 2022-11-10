@@ -1,36 +1,30 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { useForm } from "react-hook-form";
 import { countries } from './countryData';
 
-const sgMail = require('@sendgrid/mail');
-sgMail.setApiKey('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')
+
+
+import emailjs from '@emailjs/browser';
+
 export default function EmailForm() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const form = useRef();
     const onSubmit = data => {
-        const message = {
-            to: 'basir.bsmrstu@gmail.com',
-            from: data.email,
-            subject: 'checking sending mail',
-            html: `
-      <p><strong>Name:</strong> ${data.fullName}</p>
-      <p>${data.jobTitle}</p>`,
-        };
-        sgMail
-            .send(message)
-            .then(() => {
-                console.log('Email Sent!');
-
-            })
-            .catch((error) => {
-                console.error('Error: ', error);
+        console.log(data);
+        emailjs.sendForm(`${process.env.REACT_APP_EMAIL_SERVICE_ID}`, `${process.env.REACT_APP_EMAIL_TEMPLATE_ID}`, form.current, `${process.env.REACT_APP_EMAIL_PUBLIC_KEY}`)
+            .then((result) => {
+                console.log(result);
+            }, (error) => {
+                console.log(error);
             });
+
     };
 
 
     return (
         <div>
             <h5>New user: Sign up for free!</h5>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form ref={form} onSubmit={handleSubmit(onSubmit)}>
                 {/* register your input into the hook by invoking the "register" function */}
 
                 <div className="mb-3">
