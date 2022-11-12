@@ -5,6 +5,7 @@ import { countries } from './countryData';
 
 
 import emailjs from '@emailjs/browser';
+import { Link } from 'react-router-dom';
 
 export default function EmailForm() {
     const [success, setSuccess] = useState(false);
@@ -89,7 +90,7 @@ export default function EmailForm() {
                 </div>
             }
             <div className='mt-4'>
-                By clicking Sign Up, you agree to our <a href="#">Terms of Use</a> and that you have read and understand our <a href="#">Privacy Policy</a>.
+                By clicking Sign Up, you agree to our <Link to={'/terms-of-use'}>Terms of Use</Link> and that you have read and understand our <Link to="/privacy-policy">Privacy Policy</Link>.
             </div>
         </div>
     )
