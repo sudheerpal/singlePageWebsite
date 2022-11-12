@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useForm } from "react-hook-form";
 import { countries } from './countryData';
 
@@ -7,19 +7,25 @@ import { countries } from './countryData';
 import emailjs from '@emailjs/browser';
 
 export default function EmailForm() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
+    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
     const form = useRef();
     const onSubmit = data => {
-        console.log(data);
+
         emailjs.sendForm(`${process.env.REACT_APP_EMAIL_SERVICE_ID}`, `${process.env.REACT_APP_EMAIL_TEMPLATE_ID}`, form.current, `${process.env.REACT_APP_EMAIL_PUBLIC_KEY}`)
             .then((result) => {
                 console.log(result);
+                setError(false);
+                setSuccess(true);
+                reset()
             }, (error) => {
-                console.log(error);
+                setError(true);
+                setSuccess(false)
+                reset()
             });
 
     };
-
 
     return (
         <div>
@@ -70,6 +76,21 @@ export default function EmailForm() {
                 </div>
                 <input className='btn btn-info' type="submit" value={'Send Request'} />
             </form>
+            {
+                success && <div className="alert mt-3 alert-success alert-dismissible fade show" role="alert">
+                    <strong>Thank you </strong> for singing up! You will receive your sample copy of the report as soon as possible.
+                    <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            {
+                error && <div className="alert mt-3 alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Sorry! </strong> something went wrong please try again latter.
+                    <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            <div className='mt-4'>
+                By clicking Sign Up, you agree to our <a href="#">Terms of Use</a> and that you have read and understand our <a href="#">Privacy Policy</a>.
+            </div>
         </div>
     )
 }
