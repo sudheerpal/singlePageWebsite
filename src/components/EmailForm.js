@@ -21,6 +21,7 @@ export default function EmailForm() {
                 setSuccess(true);
                 reset()
             }, (error) => {
+                console.log(error);
                 setError(true);
                 setSuccess(false)
                 reset()
