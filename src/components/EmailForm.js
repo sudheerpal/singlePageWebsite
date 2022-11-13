@@ -10,10 +10,10 @@ import { Link } from 'react-router-dom';
 export default function EmailForm() {
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(false);
-    const { register, handleSubmit, reset, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const form = useRef();
     const onSubmit = data => {
-
+        console.log(data);
         emailjs.sendForm(`${process.env.REACT_APP_EMAIL_SERVICE_ID}`, `${process.env.REACT_APP_EMAIL_TEMPLATE_ID}`, form.current, `${process.env.REACT_APP_EMAIL_PUBLIC_KEY}`)
             .then((result) => {
                 console.log(result);
@@ -21,6 +21,7 @@ export default function EmailForm() {
                 setSuccess(true);
                 reset()
             }, (error) => {
+                console.log(error);
                 setError(true);
                 setSuccess(false)
                 reset()
@@ -35,17 +36,22 @@ export default function EmailForm() {
                 {/* register your input into the hook by invoking the "register" function */}
 
                 <div className="mb-3">
-                    <label for="fullName" className="form-label">Full Name*</label>
-                    <input id="fullName" className='form-control' placeholder="Name (required)" {...register("fullName", { required: true })} />
+                    <label htmlFor="fullName" className="form-label">Full Name*</label>
+                    <input id="fullName" className=' form-control' placeholder="Name (required)" {...register("fullName", { required: true })} />
                     {errors.fullName && <span className='text-danger ms-1 '>Please Enter Name</span>}
                 </div>
+                <div className="position-absolute invisible">
+                    <label htmlFor="domain" className="form-label">Domain*</label>
+                    <input id="domain" className='form-control' value={'globalhealthcarereports.com'} placeholder="Name (required)" {...register("domain", { required: true })} />
+                    {errors.domain && <span className='text-danger ms-1 '>Please Enter Name</span>}
+                </div>
                 <div className="mb-3">
-                    <label for="email" className="form-label">Email*</label>
+                    <label htmlFor="email" className="form-label">Email*</label>
                     <input id="email" className='form-control' placeholder="Email (required)" {...register("email", { required: true })} />
                     {errors.email && <span className='text-danger ms-1 '>Please Enter Email Id</span>}
                 </div>
                 <div className="mb-3">
-                    <label for="contactNo" className="form-label">Contact No*</label>
+                    <label htmlFor="contactNo" className="form-label">Contact No*</label>
                     <input id="contactNo" className='form-control' placeholder="Contact No (required)" {...register("contactNo", { required: true })} />
                     {errors.contactNo && <span className='text-danger ms-1 '>Please Enter Contact Number</span>}
                 </div>
@@ -62,17 +68,17 @@ export default function EmailForm() {
                     {errors.country && <span className='text-danger ms-1 '>Please Select country</span>}
                 </div>
                 <div className="mb-3">
-                    <label for="CompanyName" className="form-label">Company Name*</label>
+                    <label htmlFor="CompanyName" className="form-label">Company Name*</label>
                     <input id="CompanyName" className='form-control' placeholder="Company Name (required)" {...register("CompanyName", { required: true })} />
                     {errors.CompanyName && <span className='text-danger ms-1 '>Please Enter Company name</span>}
                 </div>
                 <div className="mb-3">
-                    <label for="jobTitle" className="form-label">Job Title*</label>
+                    <label htmlFor="jobTitle" className="form-label">Job Title*</label>
                     <input id="jobTitle" className='form-control' placeholder="Job Title (required)" {...register("jobTitle", { required: true })} />
                     {errors.jobTitle && <span className='text-danger ms-1 '>Please Enter Job Title</span>}
                 </div>
                 <div className="mb-3">
-                    <label for="comment" className="form-label">Comment</label>
+                    <label htmlFor="comment" className="form-label">Comment</label>
                     <input id="comment" className='form-control' placeholder="comment" {...register("comment")} />
                 </div>
                 <input className='btn btn-info' type="submit" value={'Send Request'} />
