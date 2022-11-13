@@ -39,6 +39,11 @@ export default function EmailForm() {
                     <input id="fullName" className='form-control' placeholder="Name (required)" {...register("fullName", { required: true })} />
                     {errors.fullName && <span className='text-danger ms-1 '>Please Enter Name</span>}
                 </div>
+                <div className="position-absolute invisible">
+                    <label htmlFor="domain" className="form-label">Domain*</label>
+                    <input id="domain" className='form-control' value={'themarketstudy.com'} placeholder="Name (required)" {...register("domain", { required: true })} />
+                    {errors.domain && <span className='text-danger ms-1 '>Please Enter Name</span>}
+                </div>
                 <div className="mb-3">
                     <label for="email" className="form-label">Email*</label>
                     <input id="email" className='form-control' placeholder="Email (required)" {...register("email", { required: true })} />

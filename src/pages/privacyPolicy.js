@@ -36,11 +36,11 @@ export default function PrivacyPolicy() {
                     </li>
                     <li>
                         <h5>The General Data Protection Regulation</h5>
-                        <p>YOY Markets uses Legitimate Interest as the basis of its GDPR compliance.</p>
+                        <p>The market study uses Legitimate Interest as the basis of its GDPR compliance.</p>
                         <div>
-                            YOY Markets has met the requirements of legitimate interest, and has followed the following process as part of the Legitimate Interest Assessment:
+                            The market study has met the requirements of legitimate interest, and has followed the following process as part of the Legitimate Interest Assessment:
                             <ol>
-                                <li>YOY Markets has conducted a balancing test to ensure that we have legitimate business interests in processing the personal data.</li>
+                                <li>The market study has conducted a balancing test to ensure that we have legitimate business interests in processing the personal data.</li>
                                 <li>The processing is necessary in pursuit of those interests</li>
                                 <li>The rights of the individuals who are the subjects of the personal data we process have been taken into account and do not override our interests. Our Privacy Policy clearly states that we may process data under this lawful basis. We never share information about individuals who have objected to processing under legitimate interests with our clients.</li>
                             </ol>
@@ -53,7 +53,7 @@ export default function PrivacyPolicy() {
                 </div>
                 <div>
                     <h5 className='mb-0 mt-2'>Contact us about questions or concerns</h5>
-                    If you have any questions about this Privacy Notice, our privacy practices, or with YOY Markets generally, you can contact mike.h@yoymarkets.com
+                    If you have any questions about this Privacy Notice, our privacy practices, or with The market study generally, you can contact mike.h@themarketstudy.com
                 </div>
             </div>
         </div>
