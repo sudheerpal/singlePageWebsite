@@ -22,7 +22,7 @@ export default function EmailForm() {
                 reset()
             }, (error) => {
                 console.log(error);
-                setError(true);
+                setError(error);
                 setSuccess(false)
                 reset()
             });
@@ -92,7 +92,11 @@ export default function EmailForm() {
             {
                 error && <div className="alert mt-3 alert-danger alert-dismissible fade show" role="alert">
                     <strong>Sorry! </strong> something went wrong please try again latter.
+                    {
+                        JSON.stringify(error)
+                    }
                     <button type="button" className="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+
                 </div>
             }
             <div className='mt-4'>
