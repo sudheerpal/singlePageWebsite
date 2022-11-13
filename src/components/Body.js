@@ -7,7 +7,7 @@ export default function Body() {
             <div className="container py-5">
                 <div className="row">
                     <div className="col-md-6 mt-3">
-                        <img className='w-100 shadow border p-1' src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="" />
+                        <img className='w-100 shadow border p-1' src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8bWFya2V0JTIwc3R1ZHl8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60" alt="" />
 
                         <div className="row mt-4">
                             <h3 className='ms-2'>Industries</h3>
